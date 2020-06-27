@@ -8,7 +8,7 @@ require('dotenv').config();
 const MONGO_URL = process.env.MONGO_URL;
 
 // Database Name
-const DB_NAME = 'venuespaces';
+const DB_NAME = 'test';
 
 // Collections Name
 const COLLECTIONS = {

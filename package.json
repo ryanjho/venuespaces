@@ -16,7 +16,7 @@
   "scripts": {
     "test": "jest",
     "start": "nodemon server.js",
-    "reseed-venues": "mongoimport --jsonArray --db venuespaces --collection venues --drop --file ./db/seed/venues.json"
+    "reseed-venues": "mongoimport --jsonArray --db test --collection venues --drop --file ./db/seed/venues.json"
   },
   "repository": {
     "type": "git",
