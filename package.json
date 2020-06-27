@@ -1,0 +1,31 @@
+{
+  "name": "venues-spaces",
+  "version": "1.0.0",
+  "description": "Venue Rental Platform",
+  "main": "server.js",
+  "dependencies": {
+    "chai": "^4.2.0",
+    "dotenv": "^8.2.0",
+    "ejs": "^3.1.3",
+    "express": "^4.17.1",
+    "jest": "^26.1.0",
+    "method-override": "^3.0.0",
+    "mongodb": "^3.5.9"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "jest",
+    "start": "nodemon server.js",
+    "reseed-venues": "mongoimport --jsonArray --db venuespaces --collection venues --drop --file ./db/seed/venues.json"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ryanjho/venues-spaces.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/ryanjho/venues-spaces/issues"
+  },
+  "homepage": "https://github.com/ryanjho/venues-spaces#readme"
+}
