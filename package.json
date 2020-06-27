@@ -16,7 +16,7 @@
   "scripts": {
     "test": "jest",
     "start": "node server.js",
-    "reseed-venues": "mongoimport --jsonArray --db test --collection venues --drop --file ./db/seed/venues.json"
+    "reseed-venues-local": "mongoimport --jsonArray --db venuespaces --collection venues --drop --file ./db/seed/venues.json"
   },
   "repository": {
     "type": "git",
@@ -25,7 +25,7 @@
   "author": "",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/ryanjho/venues-spaces/issues"
+    "url": "https://github.com/ryanjho/venuespaces/issues"
   },
-  "homepage": "https://github.com/ryanjho/venues-spaces#readme"
+  "homepage": "https://github.com/ryanjho/venuespaces#readme"
 }
