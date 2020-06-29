@@ -11,7 +11,6 @@ module.exports = {
         }
     },
     async getOneVenue(subdirectory) {
-
         const venue = await db.venues.findOne({ subdirectory});
         if (!venue) throw new Error(`Venue ${subdirectory} does not exist`);
         return venue;
@@ -26,7 +25,7 @@ module.exports = {
     async createNewVenue(newVenue) {
         try {
             const { insertedCount } = await db.venues.insertOne(newVenue);
-            if (!insertedCount) throw new Error('insertion failure');
+            if (!insertedCount) throw new Error('Venue insertion failure');
             return true;
         } catch(err) {
             throw new Error(`Due to ${err.message}, you are not allowed to add this venue ${JSON.stringify(newVenue)}`)

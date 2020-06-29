@@ -33,7 +33,6 @@ module.exports = {
     async createNewVenue(req, res) {
         try {
             const subdirectory = req.body.name.toLowerCase().split(' ').join('-');
-            console.log(subdirectory);
             const newVenue = {
                 "name": req.body.name,
                 "address": req.body.address,
@@ -41,6 +40,7 @@ module.exports = {
                 "price": parseInt(req.body.price),
                 "description": req.body.description,
                 "subdirectory": subdirectory,
+                "owner": req.session.currentUser,
             };
             await venueRepository.createNewVenue(newVenue);
             return res.redirect('/')
