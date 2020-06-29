@@ -13,6 +13,7 @@ const DB_NAME = 'venuespaces';
 // Collections Name
 const COLLECTIONS = {
     VENUES: 'venues',
+    OWNERS: 'owners'
 };
 
 // Create a new MongoClient
@@ -24,6 +25,7 @@ module.exports = {
         console.log('Connected to MongoDB');
         const db = connection.db(DB_NAME);
         this.venues = db.collection(COLLECTIONS.VENUES);
+        this.owners = db.collection(COLLECTIONS.OWNERS);
     },
 
     async disconnect() {

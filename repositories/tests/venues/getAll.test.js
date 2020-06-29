@@ -5,11 +5,11 @@ const db = require('../../../db/index');
 describe('venuesRepository.getAll', () => {
     beforeAll(async () => {
         await db.connect();
-    })
+    });
 
     afterAll(async () => {
         await db.disconnect();
-    })
+    });
 
     it('should return all an array', async () => {
         const venues = await venueRepository.getAll();

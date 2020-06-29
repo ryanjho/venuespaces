@@ -5,7 +5,8 @@
         "img": "https://img.tagvenue.com/resize/d2/76/widen-1680-noupsize;17008-whole-venue-room.jpeg",
         "price": 300,
         "description": "Eiusmod incididunt fugiat adipisicing ea cillum in sunt cillum minim voluptate sunt dolor aute aliquip. Amet irure duis excepteur nisi non et reprehenderit quis voluptate incididunt. Aute adipisicing veniam ullamco deserunt nostrud aliquip qui quis ut ex aliqua duis. Nulla duis magna et ullamco do excepteur. Laboris magna eu veniam aliquip. Culpa adipisicing laborum incididunt tempor incididunt cillum enim ex excepteur.",
-        "subdirectory": "hyperspace"
+        "subdirectory": "hyperspace",
+        "owner": "admin"
     },
     {
         "name": "Zouk",
@@ -13,7 +14,8 @@
         "img": "https://img.tagvenue.com/resize/85/55/widen-1680-noupsize;16585-entire-venue-room.jpg",
         "price": 1926,
         "description": "Consequat qui esse tempor adipisicing fugiat sint pariatur. Nulla in in id sunt amet. Consectetur ullamco velit culpa est. Exercitation amet ut ex excepteur proident non. Et tempor veniam proident velit et consectetur. Ad commodo consectetur magna reprehenderit duis labore magna Lorem ad magna. Amet consectetur amet laboris mollit.",
-        "subdirectory": "zouk"
+        "subdirectory": "zouk",
+        "owner": "admin"
     },
     {
         "name": "Three Degree Cafe",
@@ -21,6 +23,7 @@
         "img": "https://img.tagvenue.com/resize/38/9b/widen-1680-noupsize;13775-event-space-room.jpg",
         "price": 642,
         "description": "Nisi tempor ex id et laboris ex quis. Quis excepteur non non commodo qui ex elit ex ullamco. Veniam mollit esse ex aliqua sunt reprehenderit officia cillum magna aliqua aliquip. Et aliquip eu irure incididunt elit est commodo ipsum. Non duis amet labore elit. Dolore aliquip duis ea do occaecat dolore qui magna ex proident in veniam sint proident.",
-        "subdirectory": "three-degree-cafe"
+        "subdirectory": "three-degree-cafe",
+        "owner": "admin"
     }
 ]
