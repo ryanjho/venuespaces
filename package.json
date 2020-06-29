@@ -23,7 +23,8 @@
     "start": "node server.js",
     "dev": "nodemon server.js",
     "reseed-venues-local": "mongoimport --jsonArray --db venuespaces --collection venues --drop --file ./db/seed/venues.json",
-    "reseed-venues-remote": "mongoimport --host venuespaces-shard-00-01-b9xuv.mongodb.net:27017 --jsonArray --db venuespaces --collection venues --drop --file ./db/seed/venues.json —authenticationDabase admin —ssl —username ryanjho —password Venuespaces123!"
+    "reseed-venues-remote": "mongoimport --host VenueSpaces-shard-0/venuespaces-shard-00-00-b9xuv.mongodb.net:27017,venuespaces-shard-00-01-b9xuv.mongodb.net:27017,venuespaces-shard-00-02-b9xuv.mongodb.net:27017 --ssl --username ryanjho --password Venuespaces123! --authenticationDatabase admin --db venuespaces --collection venues --drop --jsonArray --file ./db/seed/venues.json",
+    "reseed-owners-local": "node db/seed/owners.js"
   },
   "repository": {
     "type": "git",

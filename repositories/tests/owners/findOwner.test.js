@@ -12,8 +12,8 @@ describe('ownerRespository.createNewOwner', () => {
     });
 
     it('should return owner object if the owner is in the owners collection', async () => {
-        const result = await ownerRepository.findOneOwner('hello1@helloworld.com');
-        expect(result.email).to.equal('hello1@helloworld.com');
+        const result = await ownerRepository.findOneOwner('admin@admin.com');
+        expect(result.email).to.equal('admin@admin.com');
     });
 
     it('should throw an error if the owner is not in the owners collection', async () => {

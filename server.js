@@ -24,7 +24,7 @@ app.use(session({
 app.use(flash());
 
 // Connect to Database
-db.connect()
+db.connect();
 
 // Routes
 require('./routes/routes.js')(app);
