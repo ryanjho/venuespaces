@@ -8,15 +8,16 @@
 <body>
   <%- include('../partials/navBar') %>
   <div class="container">
-
     <h1>Welcome <%= owner.name %></h1>
-    <a href="/venues/new"><button type="button" class="btn btn-success">Add Venue</button></a>
-    <form action="/sessions/owners?_method=DELETE" method="POST">
+    
+    <form action="/sessions?_method=DELETE" method="POST">
       <input type="submit" value="Log Out" />
     </form>
-    <% venues.forEach(venue => { %>
-      <%- include('../partials/venueCard', { venue }); %>
-    <% }) %>
+    <div class="container d-flex">
+        <% venues.forEach(venue => { %>
+          <%- include('../partials/venueCard', { venue }); %>
+        <% }) %>
+      </div>
   </div>
 </body>
 

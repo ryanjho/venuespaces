@@ -1,5 +1,6 @@
 const venueRepository = require('../repositories/venueRepository');
-const { updateVenue } = require('../repositories/venueRepository');
+const ownerRepository = require('../repositories/ownerRepository');
+const ObjectId = require('mongodb').ObjectID
 
 module.exports = {
     async getAllVenues(req, res) {
@@ -10,16 +11,29 @@ module.exports = {
             return res.render('errors/404', { err });
         }
     },
+    async showOwnerVenues(req, res) {
+        try {
+            const venues = await venueRepository.getOwnerVenues(req.session.currentUser);
+            res.render('owners/myVenues.ejs', { owner: req.session.currentOwner, venues: venues});
+        } catch(err) {
+            return res.render('errors/404', { err });
+        }
+    },
     async showVenue(req, res) {
         try {
             const venue = await venueRepository.showVenue(req.params.subdirectory);
-            return res.render('venues/show.ejs', { venue });
+            if (venue.owner === 'admin') {
+                const owner = await ownerRepository.findOneOwnerByEmail('admin@admin.com');
+            } else {
+                const owner = await ownerRepository.findOneOwnerById(new ObjectId(venue.owner));
+            }
+            return res.render('venues/show.ejs', { venue: venue, session: req.session });
         } catch (err) {
-            console.log(err);
             return res.render('errors/404', { err });
         }
     },
     renderCreateVenue(req, res) {
+        if (!req.session.currentOwner) return res.redirect('/');
         res.render('venues/new');
     },
     async renderEditVenue(req, res) {
@@ -33,6 +47,7 @@ module.exports = {
     async createNewVenue(req, res) {
         try {
             const subdirectory = req.body.name.toLowerCase().split(' ').join('-');
+            console.log(req.session.currentOwner);
             const newVenue = {
                 "name": req.body.name,
                 "address": req.body.address,
@@ -40,7 +55,7 @@ module.exports = {
                 "price": parseInt(req.body.price),
                 "description": req.body.description,
                 "subdirectory": subdirectory,
-                "owner": req.session.currentUser,
+                "owner": req.session.currentOwner._id,
             };
             await venueRepository.createNewVenue(newVenue);
             return res.redirect('/')

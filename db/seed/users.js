@@ -13,31 +13,31 @@ const DB_NAME = 'venuespaces';
 
 // Collections Name
 const COLLECTIONS = {
-    OWNERS: 'owners',
+    USERS: 'users',
 };
 
 // Create a new MongoClient
 const client = new MongoClient(MONGO_URL, { useUnifiedTopology: true });
 
 
-const seedAdminOwner = async () => {
+const seedUser = async () => {
     const connection = await client.connect();
-    const Owners = connection.db(DB_NAME).collection('owners');
+    const Users = connection.db(DB_NAME).collection('users');
     try {
-        await Owners.drop();
+        await Users.drop();
     } catch(err) {
-        await connection.db(DB_NAME).createCollection('owners');
+        await connection.db(DB_NAME).createCollection('users');
     }
 
-    await Owners.insertOne({
-        name: 'Admin Ryan',
-        email: 'admin@admin.com',
-        password: bcrypt.hashSync('admin123', bcrypt.genSaltSync(SALT_ROUND)),
+    await Users.insertOne({
+        name: 'User 123',
+        email: 'user123@users.com',
+        password: bcrypt.hashSync('user123', bcrypt.genSaltSync(SALT_ROUND)),
         createdAt: new Date(),
         updatedAt: new Date()
     });
     client.close();
 };
 
-seedAdminOwner();
+seedUser();
 
