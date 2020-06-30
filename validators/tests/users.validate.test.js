@@ -1,41 +1,41 @@
 const chai = require('chai');
-const validator = require('../ownersValidator');
+const validator = require('../usersValidator');
 const { expect } = chai;
 const asserttype = require('chai-asserttype');
 chai.use(asserttype);
-const ValidationError = require('../../exceptions/OwnerValidationError');
-const { validate } = require('../ownersValidator');
+const ValidationError = require('../../exceptions/UserValidationError');
+const { validate } = require('../usersValidator');
 
-describe('Owners Validator', () => {
-    it('should pass validation if owner inputs name, email and password information', () => {
-        const result = validate({ name: 'Ryan', email: 'hello@helloworld.com', password: '111' });
+describe('Users Validator', () => {
+    it('should pass validation if user inputs name, email and password information', () => {
+        const result = validate({ name: 'User 1', email: 'user1@users.com', password: '111' });
         expect(result).to.be.true;
     });
 
-    it('should fail validation if owner does not input name information', () => {
+    it('should fail validation if user does not input name information', () => {
         try {
-            validate({ email: 'hello@helloworld.com', password: '111' });
+            validate({ email: 'user2@users.com', password: '111' });
         } catch (err) {
             expect(err).to.be.ok;
-            expect(err.message).to.equal('Error validating owner');
+            expect(err.message).to.equal('Error validating user');
         }
     });
 
-    it('should fail validation if owner does not input email information', () => {
+    it('should fail validation if user does not input email information', () => {
         try {
-            validate({ name: 'Ryan', password: '111' });
+            validate({ name: 'User 2', password: '111' });
         } catch (err) {
             expect(err).to.be.ok;
-            expect(err.message).to.equal('Error validating owner');
+            expect(err.message).to.equal('Error validating user');
         }
     });
 
-    it('should fail validation if owner does not input password information', () => {
+    it('should fail validation if user does not input password information', () => {
         try {
-            validate({ name: 'Ryan', email: 'hello@helloworld.com' });
+            validate({ name: 'User 2', email: 'user2@users.com' });
         } catch (err) {
             expect(err).to.be.ok;
-            expect(err.message).to.equal('Error validating owner');
+            expect(err.message).to.equal('Error validating user');
         }
     });
 
@@ -59,7 +59,7 @@ describe('Owners Validator', () => {
             validate({ name: '111', email: '111', password: '111', createdAt: '20200625-21:00:00Z' });
         } catch(err) {
             expect(err).to.be.ok;
-            expect(err.message).to.equal('Error validating owner');
+            expect(err.message).to.equal('Error validating user');
         }
     });
 

@@ -1,16 +1,16 @@
-const ownerRespository = require('../repositories/ownerRepository');
+const userRespository = require('../repositories/userRepository');
 const bcrypt = require('bcrypt');
 
 module.exports = {
-    renderOwnerLogin (req, res) {
-        return res.render('sessions/owners/new.ejs');
+    renderUserLogin (req, res) {
+        return res.render('sessions/users/new.ejs');
     },
     async createNewSession(req, res) {
         try {
-            const owner = await ownerRespository.findOneOwnerByEmail(req.body.email);
-            if (bcrypt.compareSync(req.body.password, owner.password)) {
-                req.session.currentOwner = owner;
-                return res.redirect('/owners/dashboard');
+            const user = await userRespository.findOneUserByEmail(req.body.email);
+            if (bcrypt.compareSync(req.body.password, user.password)) {
+                req.session.currentUser = user;
+                return res.redirect('/users/dashboard');
             } else {
                 throw new Error('Invalid email or password');
             }

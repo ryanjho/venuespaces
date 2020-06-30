@@ -1,0 +1,27 @@
+<h1>Booking Enquiry Form</h1>
+<form action="/enquiries" method="POST">
+    <div class="form-group">
+        <label for="venue-booking-date">Venue Booking Date</label>
+        <input type="date" class="form-control" id="venue-booking-date" name="venueBookingDate" required>
+        <span class="input-group-btn">
+        </span>
+    </div>
+    <div class="form-group">
+        <label for="venue-booking-duration">Booking Time(include AM/PM)</label>
+        <input type="text" class="form-control" id="venue-booking-time" name="venueBookingTime" required>
+    </div>
+    <div class="form-group">
+        <label for="venue-booking-duration">Booking Duration</label>
+        <input type="number" class="form-control" id="venue-booking-duration" name="venueBookingDuration" required>
+    </div>
+    <div class="form-group">
+        <label for="budget">Budget</label>
+        <input type="number" class="form-control" id="budget" name="budget" required>
+    </div>
+    <div class="form-group">
+        <label for="message">Message</label>
+        <textarea class="form-control" id="message" rows="3" name="message" placeholder="Message" required></textarea>
+    </div>
+    <input type="text" name="venueId" value="<%= venue._id %>" hidden />
+    <button type="submit" class="btn btn-primary">Enquire Now</button>
+</form>

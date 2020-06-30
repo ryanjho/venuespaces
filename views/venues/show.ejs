@@ -8,19 +8,28 @@
 
 <body>
   <%- include('../partials/navBar') %>
-  <div class="jumbotron">
-    <h1 class="display-4"><%= venue.name %></h1>
-    <p class="lead">This is a simple hero unit, a simple jumbotron-style component for calling extra attention to
-      featured content or information.</p>
-    <hr class="my-4">
-    <p><%= venue.description %></p>
-    <p class="lead">
-      <a class="btn btn-primary btn-lg" href="#" role="button">Learn more</a>
-      <a class="btn btn-primary btn-lg" href="/venues/<%= venue.subdirectory %>/edit" role="button">Edit</a>
-      <form action="/venues/<%= venue.subdirectory %>?_method=DELETE" method="POST">
-        <input type="submit" value="Delete" class="btn btn-danger" />
-      </form>
-    </p>
+  <div class="container">
+    <div class="jumbotron" style="background-image: url('<%= venue.img %>'); background-size: cover">
+      <h1 class="display-4"><%= venue.name %></h1>
+        <p class="lead">This is a simple hero unit, a simple jumbotron-style component for calling extra attention to
+          featured content or information.</p>
+        <hr class="my-4">
+        <p><%= venue.description %></p>
+        <p class="lead">
+          <a class="btn btn-primary btn-lg" href="#" role="button">Learn more</a>
+        <% if (session.currentOwner) { %> 
+          <a class="btn btn-primary btn-lg" href="/venues/<%= venue.subdirectory %>/edit" role="button">Edit</a>
+          <form action="/venues/<%= venue.subdirectory %>?_method=DELETE" method="POST">
+            <input type="submit" value="Delete" class="btn btn-danger" />
+          </form>
+        <% } %>
+        </p>
+    </div>
+    <div class="container">
+      <% if (session.currentUser) { %>
+      <%- include('../partials/addEnquiryForm', { venue }) %>
+      <% } %>
+    </div>
   </div>
 </body>
 

@@ -1,6 +1,4 @@
 const db = require('../db/index');
-const { showCompletionScript } = require('yargs');
-const { showVenue, createNewVenue, deleteVenue } = require('../controllers/venueController');
 
 module.exports = {
     async getAll() {
@@ -10,15 +8,32 @@ module.exports = {
             throw new Error(`Database Error - ${err.message}`);
         }
     },
+    async getOwnerVenues(owner) {
+        try {
+            console.log(owner);
+            const venues = await db.venues.find({owner: owner._id}).toArray();
+            return venues;
+        } catch(err) {
+            throw new Error(`Database Error - ${err.message}`);
+        }
+    },
     async getOneVenue(subdirectory) {
         const venue = await db.venues.findOne({ subdirectory});
         if (!venue) throw new Error(`Venue ${subdirectory} does not exist`);
         return venue;
     },
+    async getOneVenueById(venueId) {
+        const venue = await db.venues.findOne( {_id: venueId });
+        if (!venue) throw new Error(`Venue with ID ${venueId} does not exist`);
+        return venue;
+    },
+    async getOneVenueByOwner(ownerId) {
+        const venue = await db.venues.findOne( { owner: ownerId});
+        if (!venue) throw new Error(`Owner ${ownerId} does not have any venues`);
+        return venue;
+    },
     async showVenue(subdirectory) {
-        const venue = await db.venues.findOne(
-            { subdirectory }
-        );
+        const venue = await db.venues.findOne({ subdirectory: subdirectory });
         if(!venue) throw new Error('Venue does not exist');
         return venue;
     },

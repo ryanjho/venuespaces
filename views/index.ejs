@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <%- include('partials/head') %>
+  <title>Venue Spaces - Unique Event Venues & Spaces For Rent</title>
+</head>
+
+<body>
+  <%- include('partials/navBar') %>
+  <div class="jumbotron">
+    <h1 class="display-4">Welcome To Venuespaces!</h1>
+    <p class="lead">Search for the best venues in town for your corporate events, team building, functions, birthday parties, celerbations and other occasions!</p>
+    <hr class="my-4">
+    <p>Singapore's Number 1 Event Venue Platform</p>
+    <p class="lead">
+      <a class="btn btn-primary btn-lg" href="#" role="button">Learn more</a>
+    </p>
+  </div>
+  <div class="container">
+    <div class="row">
+      <% venues.forEach(venue => { %>
+        <%- include('partials/venueCard', { venue }); %>
+      <% }) %>
+    </div>
+  </div>
+</body>
+</html>

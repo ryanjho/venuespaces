@@ -5,18 +5,27 @@ const SALT_ROUND = process.env.SALT_ROUND || 10;
 module.exports = {
     async createNewOwner(newOwner) {
         try {
-            newOwner.pw = newOwner.password;
+            const checkOwner = await db.owners.findOne({ email: newOwner.email });
+            if (checkOwner) throw new Error('Owner account with this email address already exists');
             newOwner.password = bcrypt.hashSync(newOwner.password, bcrypt.genSaltSync(SALT_ROUND));
-            const { insertedCount } = await db.owners.insertOne(newOwner);
-            if (!insertedCount) throw new Error('Owner insertion failure');
-            return true;
+            const result = await db.owners.insertOne(newOwner);
+            const insertedOwner = result.ops[0];
+            if (!result.insertedCount) throw new Error('Owner insertion failure');
+            return insertedOwner;
         } catch(err) {
-            throw new Error(`Due to ${err.message}, you are not allowed to add this user ${JSON.stringify(newOwner)}`);
+            throw new Error(`Due to ${err.message}, you are not allowed to add this owner ${JSON.stringify(newOwner)}`);
         }
     },
-    async findOneOwner(ownerEmail) {
+    async findOneOwnerByEmail(ownerEmail) {
         const owner = await db.owners.findOne({ email: ownerEmail });
-        if (!owner) throw new Error(`User with email address ${ownerEmail} does not exist`);
+        if (!owner) throw new Error(`Venue Owner with email address ${ownerEmail} does not exist`);
+        return owner;
+    },
+    async findOneOwnerById(ownerId) {
+        if (ownerId === 'admin') return this.findOneOwnerByEmail('admin@admin.com');
+        const owner = await db.owners.findOne({ _id: ownerId });
+        if (!owner) throw new Error(`Venue Owner with ID ${ownerId} does not exist`);
         return owner;
     }
+
 };
