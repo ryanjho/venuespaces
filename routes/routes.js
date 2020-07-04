@@ -5,8 +5,6 @@ const sessionsOwnerController = require('../controllers/sessionsOwnerController'
 const sessionsUserController = require('../controllers/sessionsUserController');
 const enquiryController = require('../controllers/enquiryController');
 const appController = require('../controllers/appController');
-const venueRespository = require('../repositories/venueRepository');
-const venueRepository = require('../repositories/venueRepository');
 
 module.exports = (app) => {
 
